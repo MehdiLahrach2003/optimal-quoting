@@ -17,3 +17,10 @@ fix = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+  "mypy>=1.10",
+]
