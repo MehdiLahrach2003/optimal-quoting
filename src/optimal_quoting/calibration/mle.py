@@ -139,3 +139,28 @@ def fit_intensity_exp_mle(
     nll_hat = float(_poisson_nll(delta, n, dt, A_hat, k_hat))
 
     return IntensityMLE(A=A_hat, k=k_hat, nll=nll_hat)
+
+def profile_nll_over_k(
+    delta: np.ndarray,
+    n: np.ndarray,
+    dt: float,
+    k_grid: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Returns (A_hat(k), nll(k)) evaluated over k_grid.
+    """
+    delta = np.asarray(delta, dtype=float)
+    n = np.asarray(n, dtype=float)
+    k_grid = np.asarray(k_grid, dtype=float)
+
+    A_hats = np.empty_like(k_grid, dtype=float)
+    nlls = np.empty_like(k_grid, dtype=float)
+
+    for i, k in enumerate(k_grid):
+        kf = float(k)
+        A = _A_hat_given_k(delta, n, dt, kf)
+        nll = _poisson_nll(delta, n, dt, A, kf)
+        A_hats[i] = A
+        nlls[i] = nll
+
+    return A_hats, nlls
