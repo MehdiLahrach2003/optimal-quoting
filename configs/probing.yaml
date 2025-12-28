@@ -1,0 +1,10 @@
+base_config: "configs/mm_toy.yaml"
+
+probing:
+  p_explore: 0.20
+  jitter: 0.80
+  widen_only: true
+
+calibration:
+  k_bounds: [0.0, 5.0]
+  grid_size: 300
