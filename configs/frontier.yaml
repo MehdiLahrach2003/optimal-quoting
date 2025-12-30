@@ -1,24 +1,19 @@
-base:
-  dt: 0.1
-  T: 20000.0
+mm_params:
+  dt: 1.0
+  T: 20000
   mid0: 100.0
-  sigma: 0.006
+  sigma: 0.02
 
-  intensity:
-    A: 1.2
-    k: 1.0
+  A: 1.2
+  k: 1.0
+  base_spread: 0.2
 
-  strategy:
-    base_spread: 0.4
-    phi: 0.0
-    order_size: 0.01
+  phi: 0.0
+  order_size: 0.01
+  fee_bps: 0.0
 
-  costs:
-    fee_bps: 0.0
+  seed: 0
+  policy: baseline
 
-frontier:
-  p_grid: [0.0, 0.05, 0.10, 0.20, 0.30]
-  jitter_grid: [0.0, 0.2, 0.5, 0.8, 1.2]
-  seeds: [1, 2, 3, 4, 5]
-  k_bounds: [0.0, 5.0]
-  grid_size: 250
+intensity:
+  grid_size: 300
